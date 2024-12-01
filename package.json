@@ -1,0 +1,33 @@
+{
+  "name": "my-wordpress-theme",
+  "version": "1.0.0",
+  "description": "A custom WordPress theme",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack --mode development --watch",
+    "build": "webpack --mode production"
+  },
+  "author": "Your Name",
+  "license": "ISC",
+  "dependencies": {
+    "browser-sync": "^3.0.3",
+    "browser-sync-webpack-plugin": "^2.3.0",
+    "concurrently": "^9.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.6",
+    "@babel/preset-env": "^7.14.7",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^7.1.2",
+    "cssnano": "^7.0.6",
+    "file-loader": "^6.2.0",
+    "mini-css-extract-plugin": "^2.9.2",
+    "node-sass": "^9.0.0",
+    "postcss-loader": "^8.1.1",
+    "sass-loader": "^16.0.3",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.38.1",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.1.0"
+  }
+}
