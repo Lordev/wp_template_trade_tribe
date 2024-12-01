@@ -34,7 +34,9 @@ services:
       - internal
 
   wordpress:
-    image: wordpress
+    build: 
+      context: .
+      dockerfile: docker/Dockerfile.wordpress
     restart: always
     container_name: ${CONTAINER_NAME}-wordpress
     ports: 
@@ -47,8 +49,8 @@ services:
       WORDPRESS_DB_PASSWORD: '${DATABASE_PASSWORD}'
       WP_ENV: development
     volumes:
-      - wordpress:/var/www/html
       - ./src:/var/www/html/wp-content:rw
+      - wp-content_uploads:/var/www/html/wp-content/uploads
     networks:
       - internal
 
@@ -88,6 +90,7 @@ services:
 volumes:
   dbdata:
   wordpress:
+  wp-content_uploads:
 
 
 networks:

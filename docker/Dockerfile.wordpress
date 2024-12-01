@@ -1,0 +1,11 @@
+FROM wordpress:latest
+
+WORKDIR /var/www/html
+
+RUN mkdir -p wp-content/uploads && \
+    chown -R www-data:www-data wp-content/uploads && \
+    chmod -R 755 wp-content/uploads
+
+COPY ../config/php.ini /usr/local/etc/php/
+
+EXPOSE 80
