@@ -1,0 +1,114 @@
+@use "sass:map";
+@import 'bootstrap/scss/bootstrap';
+
+$prefix: 'custom-';
+
+$primary : #5B4840;
+
+// Background
+
+$body-bg: #D9D9D9;
+
+// COLORS
+$theme-colors: map-merge($theme-colors, ("primary": $primary));
+
+// FONTS
+// headings
+$headings-font-family: 'labrada', sans-serif;
+$headings-font-style: bold;
+$headings-font-weight: 500;
+$headings-line-height: .8;
+$headings-color: $primary;
+
+$h1-font-size: $font-size-base * 6; // 96px 
+$h2-font-size: $font-size-base * 5; // 80px
+$h3-font-size: $font-size-base * 3; // 48px
+$h4-font-size: $font-size-base * 2.5; // 40px
+$h5-font-size: $font-size-base * 2; // 32px
+$h6-font-size: $font-size-base * 1.5; // 24px
+
+$font-weight-base: $font-weight-light;
+
+// LINKS
+$nav-link-color: $white;
+$nav-link-hover-color: $red;
+$nav-link-active-color: $red;
+$nav-link-active-bg: $primary;
+
+$nav-link-padding-x: 1rem;
+$nav-link-padding-y: .5rem;
+
+$link-decoration: none;
+
+// CONTAINERS
+
+$container-max-widths: (
+    sm: 540px,
+    md: 720px,
+    lg: 960px,
+    xl: 1140px,
+    xxl: 1320px) !default;
+@include _assert-ascending($container-max-widths, "$container-max-widths"
+);
+
+//SPACING
+$custom-spacers: (
+    6: $spacer * 4.5,
+    // 72px
+    7: $spacer * 6,
+    // 96px
+    8: $spacer * 8,
+    // 128px
+    9: $spacer * 10,
+    // 160px
+    10: $spacer * 12,
+    // 192px
+    11: $spacer * 14,
+    // 224px
+    12: $spacer * 16 // 256px
+);
+
+$spacers : map-merge($spacers, $custom-spacers);
+
+$utilities: map-merge($utilities, ("padding": (responsive: true,
+                property: padding,
+                class: p,
+                values: $custom-spacers ),
+            "padding-top": (responsive: true,
+                property: padding-top,
+                class: pt,
+                values: $custom-spacers ),
+            "padding-bottom": (responsive: true,
+                property: padding-bottom,
+                class: pb,
+                values: $custom-spacers ),
+            "padding-left": (responsive: true,
+                property: padding-left,
+                class: pl,
+                values: $custom-spacers ),
+            "padding-right": (responsive: true,
+                property: padding-right,
+                class: pr,
+                values: $custom-spacers ),
+            "padding-x": (responsive: true,
+                property: padding-left padding-right,
+                class: px,
+                values: $custom-spacers ),
+            "padding-y": (responsive: true,
+                property: padding-top padding-bottom,
+                class: py,
+                values: $custom-spacers ),
+            'margin': (responsive: true,
+                property: margin,
+                class: m,
+                values: $custom-spacers ),
+            'margin-top': (responsive: true,
+                property: margin-top,
+                class: mt,
+                values: $custom-spacers ),
+        ));
+
+
+
+
+@import 'bootstrap/scss/bootstrap';

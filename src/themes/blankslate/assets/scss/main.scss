@@ -1,29 +1,3 @@
-.test-class {
-    color: #f00;
-    font-size: 50px;
-    font-weight: bold;
-    text-align: center;
-    margin: 0 auto;
-    padding: 10px;
-    background-color: #000;
-    border: 1px solid #000;
-    border-radius: 5px;
-    box-shadow: 0 0 5px #000;
-    transition: all 0.3s;
-    &:hover {
-        color: #000;
-        background-color: #f00;
-        border-color: #f00;
-        box-shadow: 0 0 10px #f00;
-    }
-}
-
-a {
-    color: #f00;
-    text-decoration: none;
-    &:hover {
-        text-decoration: underline;
-    }
-}
-
-
+@use 'abstract';
+@use "components";
+@use 'base';

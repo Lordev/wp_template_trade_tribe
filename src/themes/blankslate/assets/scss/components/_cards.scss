@@ -1,0 +1,49 @@
+@import "bootstrap/scss/bootstrap";
+
+$card-bg: $gray-100;
+$card-border-color: $gray-600;
+$card-spacer-x: 0rem;
+$card-spacer-y: 1.25rem;
+
+.custom-card {
+    @extend .card;
+    padding: 1.25rem 1.75rem;
+    width: 25rem;;
+
+    &-img-top {
+        @extend .card-img-top;
+        border-top-left-radius: 0.25rem;
+        border-top-right-radius: 0.25rem;
+    }
+
+    &-body {
+        @extend .card-body;
+    }
+
+    &-title {
+        @extend .card-title;
+        font-size: 1.25rem;
+    }
+
+    &-text {
+        @extend .card-text;
+        margin-top: 1.5rem;
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+
+    &-link {
+        @extend .card-link;
+        color: $primary;
+
+        &:hover {
+            color: darken($primary, 10%);
+        }
+
+        &:active {
+            color: darken($primary, 20%);
+        }
+    }
+}
+
+@import "bootstrap/scss/bootstrap";
