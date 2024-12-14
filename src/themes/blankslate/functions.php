@@ -10,7 +10,7 @@ function blankslate_setup()
     add_theme_support('html5', array('search-form', 'navigation-widgets'));
     add_theme_support('appearance-tools');
     add_theme_support('woocommerce');
-add_theme_support('custom-background', array(
+    add_theme_support('custom-background', array(
         'default-preset' => '',
         'default-size' => 'auto',
         'default-color' => 'ffffff',
@@ -23,7 +23,10 @@ add_theme_support('custom-background', array(
         $content_width = 1920;
     }
     register_nav_menus(array('main-menu' => esc_html__('Main Menu', 'blankslate')));
+    register_nav_menus(array('footer-menu' => esc_html__('Footer Menu', 'blankslate')));
 }
+
+
 add_action('admin_notices', 'blankslate_notice');
 function blankslate_notice()
 {
@@ -47,6 +50,7 @@ function blankslate_enqueue()
     wp_enqueue_script('blankslate-style', get_template_directory_uri() . '/dist/main.js');
     wp_enqueue_script('jquery');
 }
+
 add_action('wp_footer', 'blankslate_footer');
 function blankslate_footer()
 {
@@ -191,6 +195,96 @@ function blankslate_comment_count($count)
         return $count;
     }
 }
+
+add_action('init', 'create_product_post_type');
+
+function create_product_post_type()
+{
+    $labels = array(
+        'name' => __('Products', 'textdomain'),
+        'singular_name' => __('Product', 'textdomain'),
+        'menu_name' => __('Products', 'textdomain'),
+        'name_admin_bar' => __('Product', 'textdomain'),
+        'add_new' => __('Add New', 'textdomain'),
+        'add_new_item' => __('Add New Product', 'textdomain'),
+        'new_item' => __('New Product', 'textdomain'),
+        'edit_item' => __('Edit Product', 'textdomain'),
+        'view_item' => __('View Product', 'textdomain'),
+        'all_items' => __('All Products', 'textdomain'),
+        'search_items' => __('Search Products', 'textdomain'),
+        'parent_item_colon' => __('Parent Products:', 'textdomain'),
+        'not_found' => __('No products found.', 'textdomain'),
+        'not_found_in_trash' => __('No products found in Trash.', 'textdomain'),
+    );
+
+    $args = array(
+        'labels' => $labels,
+        'public' => true,
+        'publicly_queryable' => true,
+        'show_ui' => true,
+        'show_in_menu' => true,
+        'query_var' => true,
+        'rewrite' => array('slug' => 'product'),
+        'capability_type' => 'post',
+        'has_archive' => true,
+        'hierarchical' => false,
+        'menu_position' => null,
+        'supports' => array('title', 'editor', 'thumbnail', 'excerpt', 'comments'),
+    );
+
+    register_post_type('product', $args);
+}
+
+
+add_action('init', 'create_product_taxonomies', 0);
+function create_product_taxonomies()
+{
+    $labels = array(
+        'name' => _x('Product Categories', 'taxonomy general name', 'textdomain'),
+        'singular_name' => _x('Product Category', 'taxonomy singular name', 'textdomain'),
+        'search_items' => __('Search Product Categories', 'textdomain'),
+        'all_items' => __('All Product Categories', 'textdomain'),
+        'parent_item' => __('Parent Product Category', 'textdomain'),
+        'parent_item_colon' => __('Parent Product Category:', 'textdomain'),
+        'edit_item' => __('Edit Product Category', 'textdomain'),
+        'update_item' => __('Update Product Category', 'textdomain'),
+        'add_new_item' => __('Add New Product Category', 'textdomain'),
+        'new_item_name' => __('New Product Category Name', 'textdomain'),
+        'menu_name' => __('Product Categories', 'textdomain'),
+    );
+
+    $args = array(
+        'hierarchical' => true,
+        'labels' => $labels,
+        'show_ui' => true,
+        'show_admin_column' => true,
+        'query_var' => true,
+        'rewrite' => array('slug' => 'product-category'),
+    );
+
+    register_taxonomy('product_category', array('product'), $args);
+}
+
+function wpdocs_add_post_link($html)
+{
+    $html = str_replace('<a ', '<a class="page-link" ', $html);
+    return $html;
+}
+add_filter('next_post_link', 'wpdocs_add_post_link');
+add_filter('previous_post_link', 'wpdocs_add_post_link');
+
+function get_top_parent_id($post)
+{
+    if ( $post->post_parent > 0 ) {
+        $parent = array_pop( get_post_ancestors($post->ID) );
+    }
+    else {
+        $parent = $post->post_parent;
+    }
+    return $parent;
+}
+
+
 function dd($data): void
 {
     echo '<pre>';
