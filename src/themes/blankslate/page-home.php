@@ -31,5 +31,12 @@
         'parent_field' => 'slider-cards-testimonials',
         'child_field' => 'slider-card-testimonials',
     ]);
+
+    render_section('picture-section', [
+        'pictures_home' => 'pictures-home',
+    ]);
+
+
+    get_footer();
     ?>
 </div>
