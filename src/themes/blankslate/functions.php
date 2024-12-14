@@ -10,6 +10,14 @@ function blankslate_setup()
     add_theme_support('html5', array('search-form', 'navigation-widgets'));
     add_theme_support('appearance-tools');
     add_theme_support('woocommerce');
+add_theme_support('custom-background', array(
+        'default-preset' => '',
+        'default-size' => 'auto',
+        'default-color' => 'ffffff',
+        'default-image' => 'cover',
+        'default-repeat' => 'no-repeat',
+        'default-attachment' => 'scroll',
+    ));
     global $content_width;
     if (!isset($content_width)) {
         $content_width = 1920;
