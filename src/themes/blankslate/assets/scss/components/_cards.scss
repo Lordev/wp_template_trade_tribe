@@ -8,7 +8,18 @@ $card-spacer-y: 1.25rem;
 .custom-card {
     @extend .card;
     padding: 1.25rem 1.75rem;
-    width: 25rem;;
+
+    &--sm {
+        width: 22rem; // 352px
+    }
+
+    &--md {
+        width: 28rem; // 448px
+    }
+
+    &--lg {
+        width: 33rem; // 528px
+    }
 
     &-img-top {
         @extend .card-img-top;
@@ -27,9 +38,9 @@ $card-spacer-y: 1.25rem;
 
     &-text {
         @extend .card-text;
-        margin-top: 1.5rem;
-        font-size: 1.5rem;
+        margin-top: .25rem;
         font-weight: 600;
+        font-size: 1.3rem; // 24px
     }
 
     &-link {
@@ -44,6 +55,7 @@ $card-spacer-y: 1.25rem;
             color: darken($primary, 20%);
         }
     }
-}
+};
+
 
 @import "bootstrap/scss/bootstrap";

@@ -1,0 +1,6 @@
+.slider {
+    overflow: hidden;
+    &-inner {
+        transition: transform .5s ease-in-out
+    }
+}

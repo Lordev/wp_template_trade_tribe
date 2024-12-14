@@ -183,3 +183,49 @@ function blankslate_comment_count($count)
         return $count;
     }
 }
+function dd($data): void
+{
+    echo '<pre>';
+    var_dump($data);
+    echo '</pre>';
+    die();
+}
+
+
+
+function render_section(string $template, array $vars): void
+{
+    foreach ($vars as $key => $value) {
+        set_query_var($key, $value);
+    }
+    get_template_part($template);
+}
+
+enum SLIDER: string
+{
+    case SHOP = 'shop';
+    case TESTIMONIALS = 'testimonials';
+};
+
+
+function get_acf_group_field_children(array $parent_field, string $child_field, array $fields): array
+{
+    $children = [];
+    try {
+        if ($parent_field) {
+            $i = 1;
+            foreach ($parent_field as $value) {
+                $field_values = [];
+                foreach ($fields as $field) {
+                    $key = $child_field . '-' . $field . '-' . $i; // example: slider-card-image-1.. slider-card-title-1.. 
+                    $field_values[$field] = $value[$key];
+                }
+                $children[] = $field_values;
+                $i++;
+            }
+        }
+    } catch (Exception $e) {
+        echo 'Error: ',  $e->getMessage(), "\n";
+    }
+    return $children;
+}
