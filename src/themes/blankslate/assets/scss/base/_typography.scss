@@ -108,7 +108,66 @@ $utilities: map-merge($utilities, ("padding": (responsive: true,
                 values: $custom-spacers ),
         ));
 
+.woocommerce div.product form.cart .custom-add-to-cart-button {
+    background-color: $primary;
+    color: $white;
+    border: 1px solid #000;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
 
+    &:hover {
+        background-color: #fff;
+        color: #000;
+    }
+}
 
+.woocommerce span.onsale {
+    background-color: $primary;
+    color: $white;
+}
+
+.woocommerce:where(body:not(.woocommerce-uses-block-theme)) div.product p.price,
+.woocommerce:where(body:not(.woocommerce-uses-block-theme)) div.product span.price .custom-price {
+    color: $secondary;
+    font-size: $font-size-base * 1.5;
+    font-weight: bold;
+}
+
+.woocommerce:where(body:not(.woocommerce-uses-block-theme)) ul.products li.product .price {
+    color: $secondary;
+    font-size: $font-size-base * 1.5;
+    font-weight: bold;
+}
+
+.woocommerce ul.products li.product .button {
+    background-color: $primary;
+    color: $white;
+    border: 1px solid #000;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background-color: #fff;
+        color: #000;
+    }
+}
+
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.woocommerce #content table.cart td.actions .input-text, .woocommerce table.cart td.actions .input-text, .woocommerce-page #content table.cart td.actions .input-text, .woocommerce-page table.cart td.actions .input-text {
+    width: 50%
+}
 
 @import 'bootstrap/scss/bootstrap';
