@@ -4,7 +4,7 @@ defined( 'ABSPATH' ) || exit;
 get_header( 'shop' );
 ?>
 
-<div class="container">
+<div class="container mt-4">
 <?php
 /**
  * The Template for displaying product archives, including the main shop page which is a post type archive

@@ -18,6 +18,18 @@ function blankslate_setup()
         'default-repeat' => 'no-repeat',
         'default-attachment' => 'scroll',
     ));
+    add_theme_support('woocommerce', array(
+        'thumbnail_image_width' => 150,
+        'single_image_width' => 300,
+        'product_grid' => array(
+            'default_rows' => 3,
+            'min_rows' => 2,
+            'max_rows' => 8,
+            'default_columns' => 4,
+            'min_columns' => 2,
+            'max_columns' => 5,
+        ),
+    ));	
     global $content_width;
     if (!isset($content_width)) {
         $content_width = 1920;
