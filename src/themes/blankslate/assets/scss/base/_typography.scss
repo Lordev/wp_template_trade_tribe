@@ -1,18 +1,26 @@
 @use "sass:map";
+
 @import 'bootstrap/scss/bootstrap';
 
 $prefix: 'custom-';
 
+// Colors
 $primary : #5B4840;
+$secondary: #93796D;
+$light: #D9D9D9;
+
+$theme-colors: map-merge($theme-colors, ("primary": $primary));
+// Text Color
+
+$primary-text-emphasis: $secondary;
 
 // Background
 
 $body-bg: #D9D9D9;
 
-// COLORS
-$theme-colors: map-merge($theme-colors, ("primary": $primary));
-
 // FONTS
+$paragraph-margin-bottom : 0rem;
+
 // headings
 $headings-font-family: 'labrada', sans-serif;
 $headings-font-style: bold;
@@ -30,26 +38,39 @@ $h6-font-size: $font-size-base * 1.5; // 24px
 $font-weight-base: $font-weight-light;
 
 // LINKS
-$nav-link-color: $white;
-$nav-link-hover-color: $red;
-$nav-link-active-color: $red;
+$nav-link-color: $light;
+$nav-link-hover-color: $secondary;
+$nav-link-active-color: $secondary;
 $nav-link-active-bg: $primary;
 
 $nav-link-padding-x: 1rem;
 $nav-link-padding-y: .5rem;
 
 $link-decoration: none;
+$link-color: $primary;
+$link-hover-color: $secondary;
 
 // CONTAINERS
 
 $container-max-widths: (
-    sm: 540px,
-    md: 720px,
-    lg: 960px,
-    xl: 1140px,
-    xxl: 1320px) !default;
-@include _assert-ascending($container-max-widths, "$container-max-widths"
+    sm: 640px,
+    md: 900px,
+    lg: 1100px,
+    xl: 1200px,
+    xxl: 1320px
 );
+
+@include _assert-ascending($container-max-widths, "$container-max-widths");
+
+//LISTS
+
+$list-group-color: $primary;
+$list-group-bg: $white;
+
+$list-group-active-color: $white;
+$list-group-active-bg: $primary;
+$list-group-active-border-color: $primary;
+
 
 //SPACING
 $custom-spacers: (
@@ -149,13 +170,13 @@ ul {
 
 .woocommerce:where(body:not(.woocommerce-uses-block-theme)) div.product p.price,
 .woocommerce:where(body:not(.woocommerce-uses-block-theme)) div.product span.price .custom-price {
-    color: $secondary;
+    color: $primary-text-emphasis;
     font-size: $font-size-base * 1.5;
     font-weight: bold;
 }
 
 .woocommerce:where(body:not(.woocommerce-uses-block-theme)) ul.products li.product .price {
-    color: $secondary;
+    color: $primary-text-emphasis;
     font-size: $font-size-base * 1.5;
     font-weight: bold;
 }
@@ -175,6 +196,11 @@ ul {
         background-color: #fff;
         color: #000;
     }
+}
+
+.woocommerce img, .woocommerce-page img {
+    aspect-ratio: 1 1;
+    width: 40px;
 }
 
 .custom-table {
