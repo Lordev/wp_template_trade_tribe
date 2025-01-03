@@ -1,9 +1,10 @@
 @import "bootstrap/scss/bootstrap";
 
-$card-bg: none;
-$card-border-color: $gray-600;
-$card-spacer-x: 0rem;
+$card-bg: #c7c1bf;
+$card-border-color: none;
+$card-spacer-x: 1.25rem;
 $card-spacer-y: 1.25rem;
+
 
 .custom-card {
     @extend .card;
@@ -29,6 +30,10 @@ $card-spacer-y: 1.25rem;
 
     &-body {
         @extend .card-body;
+        padding: 2.25rem;
+        background-color: $gray-100;
+        border-radius: 0.25rem;
+
     }
 
     &-title {
@@ -39,7 +44,7 @@ $card-spacer-y: 1.25rem;
     &-text {
         @extend .card-text;
         margin-top: .25rem;
-        font-weight: 600;
+        font-weight: 300;
         font-size: 1.3rem; // 24px
     }
 

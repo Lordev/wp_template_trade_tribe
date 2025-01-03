@@ -1,42 +1,61 @@
-<?php get_header(); ?>
-
-<div class="vh-100">
-</div>
+<?php get_header('home'); ?>
 
 <div class="container">
-                <?php
+    <div class="row gx-4 mt-10">
+        <?php
+        render_section('partials/heading-section', [
+            'heading_section' => 'heading-section',
+            'paragraph' => 'paragraph',
+        ]);
+        ?>
+    </div>
+    <div class="row gx-4 mt-6">
+        <?php
+        render_section('partials/slider/slider-section', [
+            'slider' => SLIDER::SHOP,
+            'parent_field' => 'slider-cards',
+            'child_field' => 'slider-card',
+        ]);
+        ?>
+    </div>
 
-    render_section('heading-section', [
-        'left_paragraph' => 'paragraph-left-first-section-home',
-        'right_paragraph' => 'paragraph-right-first-section-home',
-        'title' => 'heading-first-section-home',
-    ]);
+    <div class="row gx-4 mt-10">
+        <?php
+        render_section('partials/heading-section', [
+            'heading_section' => 'heading-second-section-home',
+            'paragraph' => 'paragraph-right-second-section-home',
+        ]);
+        ?>
+    </div>
 
-    render_section('slider-section', [
-        'slider' => SLIDER::SHOP,
-        'parent_field' => 'slider-cards',
-        'child_field' => 'slider-card',
-    ]);
+    <div class="row gx-4 mt-6">
+        <?php
+        render_section('partials/slider/slider-section', [
+            'slider' => SLIDER::TESTIMONIALS,
+            'parent_field' => 'slider-cards-testimonials',
+            'child_field' => 'slider-card-testimonials',
+        ]);
+        ?>
+    </div>
+    <div class="row gx-4 mt-10">
+        <?php
+        render_section('partials/heading-section', [
+            'heading_section' => 'heading-second-section-home',
+            'paragraph' => 'paragraph-right-second-section-home',
+        ]);
+        ?>
+    </div>
+    <div class="row gx-4 mt-6">
+        <?php
+        render_section(
+            'partials/slider/marquee',
+            []
+        );
+        ?>
+    </div>
 
-
-    render_section('heading-section', [
-        'left_paragraph' => 'paragraph-left-second-section-home',
-        'right_paragraph' => 'paragraph-right-second-section-home',
-        'title' => 'heading-second-section-home',
-    ]);
-
-    
-    render_section('slider-section', [
-        'slider' => SLIDER::TESTIMONIALS,
-        'parent_field' => 'slider-cards-testimonials',
-        'child_field' => 'slider-card-testimonials',
-    ]);
-
-    render_section('picture-section', [
-        'pictures_home' => 'pictures-home',
-    ]);
-
-
+    <?php
     get_footer();
+
     ?>
 </div>

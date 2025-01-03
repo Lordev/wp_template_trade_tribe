@@ -2,6 +2,7 @@
 
 @import 'bootstrap/scss/bootstrap';
 
+
 $prefix: 'custom-';
 
 // Colors
@@ -9,14 +10,29 @@ $primary : #5B4840;
 $secondary: #93796D;
 $light: #D9D9D9;
 
-$theme-colors: map-merge($theme-colors, ("primary": $primary));
 // Text Color
 
 $primary-text-emphasis: $secondary;
 
 // Background
 
-$body-bg: #D9D9D9;
+$theme-colors: (
+    "primary": $primary,
+    "secondary": $secondary,
+    "light": $light
+);
+
+$body-bg: $light;
+
+@each $color, $value in $theme-colors {
+    .bg-#{$color} {
+        background-color: $value !important;
+    }
+
+    .text-#{$color} {
+        color: $value !important;
+    }
+}
 
 // FONTS
 $paragraph-margin-bottom : 0rem;
@@ -28,12 +44,21 @@ $headings-font-weight: 500;
 $headings-line-height: .8;
 $headings-color: $primary;
 
-$h1-font-size: $font-size-base * 6; // 96px 
+$h1-font-size: $font-size-base * 9.375; // 150px
 $h2-font-size: $font-size-base * 5; // 80px
 $h3-font-size: $font-size-base * 3; // 48px
 $h4-font-size: $font-size-base * 2.5; // 40px
 $h5-font-size: $font-size-base * 2; // 32px
-$h6-font-size: $font-size-base * 1.5; // 24px
+
+
+$font-sizes: (
+    1: $h1-font-size,
+    2: $h2-font-size,
+    3: $h3-font-size,
+    4: $h4-font-size,
+    5: $h5-font-size,
+    6: $h6-font-size
+);
 
 $font-weight-base: $font-weight-light;
 
@@ -198,7 +223,8 @@ ul {
     }
 }
 
-.woocommerce img, .woocommerce-page img {
+.woocommerce img,
+.woocommerce-page img {
     aspect-ratio: 1 1;
     width: 40px;
 }
@@ -209,15 +235,24 @@ ul {
     border-spacing: 0;
 }
 
-.woocommerce #content table.cart td.actions .input-text, .woocommerce table.cart td.actions .input-text, .woocommerce-page #content table.cart td.actions .input-text, .woocommerce-page table.cart td.actions .input-text {
+.woocommerce #content table.cart td.actions .input-text,
+.woocommerce table.cart td.actions .input-text,
+.woocommerce-page #content table.cart td.actions .input-text,
+.woocommerce-page table.cart td.actions .input-text {
     width: 50%
 }
 
 .woocommerce-info {
     border-top: $primary 3px solid;
+
     &::before {
         color: $primary;
     }
 }
+
+.w-fit-content {
+    width: fit-content !important;
+}
+
 
 @import 'bootstrap/scss/bootstrap';
