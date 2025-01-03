@@ -1,21 +1,37 @@
-@use '../abstract' as *;
+@use '../base/typography' as *;
 
 .header {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     padding: 0 36px;
+    background-color: rgba($primary, 0.9);
 }
 
 .menu {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
-    
+    margin: 0;
+
     &-item {
         list-style: none;
 
         &-37 {
             margin-left: auto;
+            background-color: $secondary;
+            &:hover {
+                background-color: $primary;
+            }
+            & a {
+                & span {
+                    color: $primary;
+
+                    &:hover {
+                        color: $secondary;
+                    }
+                }
+            }
         }
     }
 
@@ -30,5 +46,13 @@
             width: 100%;
             padding: 0 36px;
         }
+    }
+}
+
+.wpmenucart-contents {
+    transition: all 0.3s ease;
+    color: $light;
+    &:hover {
+        color: $secondary;
     }
 }
