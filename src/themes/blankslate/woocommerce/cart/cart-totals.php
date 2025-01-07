@@ -22,8 +22,8 @@ defined( 'ABSPATH' ) || exit;
 
 	<?php do_action( 'woocommerce_before_cart_totals' ); ?>
 
-	<h4 class=""><?php esc_html_e( 'Cart totals', 'woocommerce' ); ?></h4>
-
+	<h4><?php esc_html_e( 'Cart totals', 'woocommerce' ); ?></h4>
+	<hr>
 	<table cellspacing="0" class="shop_table shop_table_responsive mt-4">
 
 		<tr class="cart-subtotal">
@@ -102,10 +102,7 @@ defined( 'ABSPATH' ) || exit;
 		<?php do_action( 'woocommerce_cart_totals_after_order_total' ); ?>
 
 	</table>
-
-	<div class="wc-proceed-to-checkout p-0">
-		<?php do_action( 'woocommerce_proceed_to_checkout' ); ?>
-	</div>
+	<button type="submit" class="btn btn-light mt-3 <?php echo esc_attr(wc_wp_theme_get_element_class_name('button') ? ' ' . wc_wp_theme_get_element_class_name('button') : ''); ?>" name="update_cart" value="<?php esc_attr_e('Update cart', 'woocommerce'); ?>"><?php esc_html_e('Update cart', 'woocommerce'); ?></button>
 
 	<?php do_action( 'woocommerce_after_cart_totals' ); ?>
 

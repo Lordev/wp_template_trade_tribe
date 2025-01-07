@@ -23,6 +23,16 @@ $theme-colors: (
 );
 
 $body-bg: $light;
+$table-bg: $light;
+
+$primary-bg-subtle:       tint-color($primary, 80%) ;
+$secondary-bg-subtle:     tint-color($secondary, 80%) ;
+$success-bg-subtle:       tint-color($success, 80%) ;
+$info-bg-subtle:          tint-color($info, 80%) ;
+$warning-bg-subtle:       tint-color($warning, 80%) ;
+$danger-bg-subtle:        tint-color($danger, 80%) ;
+$light-bg-subtle:         mix($gray-100, $white) ;
+$dark-bg-subtle:          $gray-400 ;
 
 @each $color, $value in $theme-colors {
     .bg-#{$color} {
@@ -49,6 +59,7 @@ $h2-font-size: $font-size-base * 5; // 80px
 $h3-font-size: $font-size-base * 3; // 48px
 $h4-font-size: $font-size-base * 2.5; // 40px
 $h5-font-size: $font-size-base * 2; // 32px
+$h6-font-size: $font-size-base * 1.5; // 24px
 
 
 $font-sizes: (
@@ -78,14 +89,13 @@ $link-hover-color: $secondary;
 // CONTAINERS
 
 $container-max-widths: (
-    sm: 640px,
+    sm: 600px,
     md: 900px,
     lg: 1100px,
-    xl: 1200px,
-    xxl: 1320px
+    xl: 1280px,
+    xxl: 1500px
 );
 
-@include _assert-ascending($container-max-widths, "$container-max-widths");
 
 //LISTS
 
@@ -256,3 +266,4 @@ ul {
 
 
 @import 'bootstrap/scss/bootstrap';
+
