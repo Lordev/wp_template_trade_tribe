@@ -26,5 +26,5 @@ jobs:
           file: ./docker/Dockerfile.wordpress
           platforms: linux/amd64,linux/arm64/v8
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/${{ github.event.repository.name }}:wordpress-latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/${{ github.event.repository.name }}:latest
 
