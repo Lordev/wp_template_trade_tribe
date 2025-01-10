@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   database:
     container_name: ${CONTAINER_NAME}-database
@@ -10,7 +12,7 @@ services:
       MYSQL_ROOT_PASSWORD: ${DATABASE_ROOT_PASSWORD}
       MYSQL_USER: ${DATABASE_USER}
     healthcheck:
-      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p$$DATABASE_ROOT_PASSWORD" ]
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p$$DATABASE_ROOT_PASSWORD"]
       timeout: 20s
       retries: 10
     ports:
@@ -34,20 +36,20 @@ services:
       - internal
 
   wordpress:
-    build: 
+    build:
       context: .
       dockerfile: docker/Dockerfile.wordpress
+    image: ${DOCKER_USERNAME}/${REPOSITORY_NAME}:wordpress-latest
     restart: always
     container_name: ${CONTAINER_NAME}-wordpress
-    ports: 
-      - 80:80
+    ports:
+      - "80:80"
     env_file: .env
     environment:
       WORDPRESS_DB_HOST: database:3306
       WORDPRESS_DB_NAME: '${DATABASE_NAME}'
       WORDPRESS_DB_USER: '${DATABASE_USER}'
       WORDPRESS_DB_PASSWORD: '${DATABASE_PASSWORD}'
-      WP_ENV: development
     volumes:
       - ./src:/var/www/html/wp-content:rw
       - wp-content_uploads:/var/www/html/wp-content/uploads
@@ -56,42 +58,25 @@ services:
 
   my-wpcli:
     container_name: ${CONTAINER_NAME}-wpcli
-    depends_on: 
+    depends_on:
       - wordpress
       - database
     image: wordpress:cli
     environment:
-      WORDPRESS_DB_HOST: database:3306 
+      WORDPRESS_DB_HOST: database:3306
       WORDPRESS_DB_NAME: '${DATABASE_NAME}'
       WORDPRESS_DB_USER: '${DATABASE_USER}'
       WORDPRESS_DB_PASSWORD: '${DATABASE_PASSWORD}'
-      WP_ENV: development
     entrypoint: wp
     command: "--info"
     volumes_from:
-      - wordpress:/var/www/html
+      - wordpress
     networks:
       - internal
-
-  webpack:
-    container_name: ${CONTAINER_NAME}-webpack
-    build:
-      context: .
-      dockerfile: docker/Dockerfile.webpack
-    volumes:
-      - ./src:/app/src
-    ports:
-      - "3000:3000"
-      - "3001:3001"
-    networks:
-      - internal
-    command: yarn dev
 
 volumes:
   dbdata:
-  wordpress:
   wp-content_uploads:
-
 
 networks:
   internal:
